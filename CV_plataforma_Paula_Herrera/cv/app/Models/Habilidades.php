@@ -21,4 +21,4 @@ class Habilidades extends Model
 // (1, 'Laravel', 'Avanzado', NOW(), NOW()),
 // (1, 'JavaScript', 'Intermedio', NOW(), NOW()),
 // (1, 'Vue.js', 'Intermedio', NOW(), NOW()),
-// (1, 'SQL', 'Avanzado', NOW(), NOW()); 
+// (1, 'SQL', 'Avanzado', NOW(), NOW());

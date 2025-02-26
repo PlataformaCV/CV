@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('perfiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade'); // Relación con users
-            $table->string('nombre_completo'); 
+            $table->string('nombre_completo');
             $table->string('profesion');
-            $table->text('descripcion'); 
+            $table->text('descripcion');
             $table->string('telefono')->nullable();
-            $table->string('email')->nullable(); 
-            $table->string('redes_sociales')->nullable(); 
-            $table->string('sitio_web')->nullable(); 
+            $table->string('email')->nullable();
+            $table->string('sitio_web')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('github')->nullable();
             $table->timestamps();
         });
     }
