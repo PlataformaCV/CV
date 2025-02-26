@@ -1,23 +1,19 @@
-@extends('layouts.app')
-
 @section('content')
 <div class="container">
-    <h1>Editar CV</h1>
+    <!-- <h1>Editar CV</h1> -->
 
-    <!-- Formulario para cargar el archivo CV -->
-    <form method="POST" action="" enctype="multipart/form-data">
+    <!-- Formulario para cargar el archivo CV
+    <form method="POST" action="{{ route('cv.upload') }}" enctype="multipart/form-data">
         @csrf
-
         <div>
             <label for="cv">Cargar CV (PDF, Word, etc.)</label>
             <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" />
         </div>
-
         <button type="submit">Subir CV</button>
-    </form>
+    </form> -->
 
-    <!-- O Formulario para agregar detalles del CV como texto -->
-    <form method="POST" action="">
+    <!-- Formulario para agregar detalles del CV como texto -->
+    <form method="POST" action="{{ route('cv.update') }}">
         @csrf
         @method('PUT')
 
