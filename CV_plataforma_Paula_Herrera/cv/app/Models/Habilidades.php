@@ -12,5 +12,5 @@ class Habilidades extends Model
         'puesto',
         'fecha_inicio',
         'fecha_fin',
-        'descripcion_actividades']
+        'descripcion_actividades'];
 }
