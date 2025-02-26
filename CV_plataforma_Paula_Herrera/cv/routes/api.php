@@ -10,3 +10,4 @@ Route::apiResource('/perfiles', PerfilController::class);
 Route::apiResource('/experiencia', ExperienciaLaboralController::class);
 Route::apiResource('/formacionController', HabilidadesController::class);
 Route::apiResource('/Habilidades', ProyectoController::class);
+

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('perfil_id')->constrained('users')->onDelete('cascade');
             $table->string('tituloProyecto');
+            $table->string('descripcion');
             $table->string('enlace');
             $table->timestamps();
         });
