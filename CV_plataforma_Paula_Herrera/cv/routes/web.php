@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\FormacionController;
+use App\Http\Controllers\HabilidadesController;
+use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\ExperienciaLaboralController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,5 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/profile', [ProfileController::class, 'create'])->name('profile.create');
 });
+
+Route::resource('perfiles', PerfilController::class);
+Route::resource('formaciones', FormacionController::class);
+Route::resource('habilidades', HabilidadesController::class);
+Route::resource('experiencias', ExperienciaLaboralController::class);
+Route::resource('proyectos', ProyectoController::class);
 
 require __DIR__.'/auth.php';
