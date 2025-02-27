@@ -11,7 +11,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $perfiles=Perfil::All();
+        return view($perfiles);
     }
 
     /**
@@ -19,7 +20,7 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        //
+        return view('profile.create');  
     }
 
     /**

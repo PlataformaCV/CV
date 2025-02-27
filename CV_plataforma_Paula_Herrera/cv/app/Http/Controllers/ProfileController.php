@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
     public function create()
 {
-    return view('profile.create');  // Asegúrate de que el archivo se llame 'create.blade.php'
+    return view('profile.create'); 
 }
 
     /**

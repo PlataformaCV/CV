@@ -2,27 +2,43 @@
 
 @section('content')
 <div class="container">
-    <h1>Editar Perfil</h1>
-    
-    <!-- Formulario para editar datos del usuario -->
-    <form method="POST" action="{{ route('profile.update') }}">
+    <form method="POST" action="">
         @csrf
         @method('PUT')
-
+        <h1>Editar CV</h1>
         <div>
-            <label for="name">Nombre</label>
-            <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" required />
+            <x-input-label for="nombre">Nombre completo</x-input-label>
+            <input id="nombre" required name="nombre" type="text" value="{}" class="block mt-1 w-full" />
         </div>
-
         <div>
-            <label for="email">Correo electrónico</label>
-            <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" required />
+            <x-input-label for="profesion">Profesión</x-input-label>
+            <input id="profesion" required name="profesion" type="text" value="{}" class="block mt-1 w-full" />
         </div>
-
-        <button type="submit">Actualizar Perfil</button>
+        <div>
+            <x-input-label for="descripcion">Descripción</x-input-label>
+            <textarea id="descripcion" required name="descripcion" value="{}" class="block mt-1 w-full" rows="4"></textarea>
+        </div>
+        <div>
+            <x-input-label for="telefono">Teléfono</x-input-label>
+            <input id="telefono" required name="telefono" type="number" value="{}" class="block mt-1 w-full" />
+        </div>
+        <div>
+            <x-input-label for="email">Email</x-input-label>
+            <input id="email" required name="email" type="email" value="{}" class="block mt-1 w-full" />
+        </div>
+        <div>
+            <x-input-label for="web">Sitio web</x-input-label>
+            <input id="web" required name="web" type="url" value="{}" class="block mt-1 w-full" />
+        </div>
+        <div>
+            <x-input-label for="linkedin">Linkedin</x-input-label>
+            <input id="linkedin" required name="linkedin" value="{}" type="url" class="block mt-1 w-full" />
+        </div>
+        <div>
+            <x-input-label for="github">GitHub</x-input-label>
+            <input id="github" required name="github" type="url" value="{}" class="block mt-1 w-full" />
+        </div>
+        <x-primary-button type="submit">Agregar</x-primary-button>
     </form>
-
-    <!-- Enlace a la página de edición del CV -->
-    <a href="{{ route('profile.cv') }}">Editar CV</a>
 </div>
 @endsection

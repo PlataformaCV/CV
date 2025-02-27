@@ -1,5 +1,4 @@
 
-@yield('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -31,7 +30,8 @@
 
             <!-- Page Content -->
             <main>
-
+                <!-- pongo aqui el contenido, sino no sale -->
+            @yield('content')
             </main>
         </div>
     </body>
