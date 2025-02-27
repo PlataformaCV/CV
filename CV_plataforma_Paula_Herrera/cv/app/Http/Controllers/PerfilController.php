@@ -28,7 +28,31 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate=$request->validate([
+        'nombre_completo'=>'required|string|max:255',
+        'profesion'=>'required|string|max:255',
+        'descripcion'=>'required|string|max:255',
+        'telefono'=>'required|string|max:10',
+        'email'=>'required|string|max:255',
+        'sitio_web'=>'required|string|max:255',
+        'sitio_web'=>'required|string|max:255',
+        'linkedin'=>'required|string|max:255',
+        'github'=>'required|string|max:255'
+        ]);
+        $perfil=new Perfil();   
+
+        $perfil->nombre_completo = $validated['nombre_completo'];
+        $perfil->profesion = $validated['profesion'];
+        $perfil->descripcion = $validated['descripcion'];
+        $perfil->telefono = $validated['telefono'];
+        $perfil->email = $validated['email'];
+        $perfil->sitio_web = $validated['sitio_web'];
+        $perfil->linkedin = $validated['linkedin'];
+        $perfil->github = $validated['github'];
+
+        $perfil->save();
+
+        return redirect()->route('profile.create');
     }
 
     /**

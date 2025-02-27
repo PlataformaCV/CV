@@ -14,9 +14,10 @@ class Perfil extends Model
         'descripcion',
         'telefono',
         'email',
-        'redes_sociales',
         'sitio_web',
-        'usuario_id',
+        'sitio_web',
+        'linkedin',
+        'github'
     ];
 
 public function usuario()
