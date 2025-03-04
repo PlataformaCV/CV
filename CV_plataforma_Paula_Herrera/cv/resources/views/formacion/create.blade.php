@@ -22,7 +22,7 @@
         margin-left:405;
     }
 </style>
-    <form method="POST" action="">
+    <form method="POST" action="{{ route('perfiles.store') }}">
         @csrf
         <h1>RELLENA TU FORMACIóN</h1>
         <div>
