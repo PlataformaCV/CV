@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ExperienciaLaboral;
+use App\Models\User;
+use App\Models\Perfil;
 
 class ExperienciaLaboralController extends Controller
 {
@@ -11,7 +14,8 @@ class ExperienciaLaboralController extends Controller
      */
     public function index()
     {
-        //
+        $experiencias=ExperienciaLaboral::all();
+        return view('experiencias.create', compact('experiencias'));
     }
 
     /**
@@ -19,7 +23,8 @@ class ExperienciaLaboralController extends Controller
      */
     public function create()
     {
-        //
+        $usuarios = User::all(); 
+        return view('experiencias.create', compact('usuarios'));
     }
 
     /**
@@ -27,7 +32,28 @@ class ExperienciaLaboralController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validaDatos=$request->validate([
+            'usuario_id'=>'required|integer|exists:users,id',
+            'empresa'=>'string|max:200',
+            'puesto'=>'string|max:50',
+            'fecha_inicio'=>'date',
+            'fecha_fin'=>'date',
+            'descripcion_actividades'=>'string|max:300'
+           ]);
+    
+           $experienciaLaboral=new ExperienciaLaboral();
+    
+           $experienciaLaboral->usuario_id=$validaDatos['usuario_id'];
+           $experienciaLaboral->empresa=$validaDatos['empresa'];
+           $experienciaLaboral->puesto=$validaDatos['puesto'];
+           $experienciaLaboral->fecha_inicio=$validaDatos['fecha_inicio'];
+           $experienciaLaboral->fecha_fin=$validaDatos['fecha_fin'];
+           $experienciaLaboral->descripcion_actividades=$validaDatos['descripcion_actividades'];
+    
+            $experienciaLaboral->save();
+    
+            return redirect()->route('experiencias.create')->with('succes','Se ha insertado una experiencia laboral académica nueva!');
+
     }
 
     /**

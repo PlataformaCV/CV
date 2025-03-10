@@ -12,7 +12,7 @@
         font-weight: bold;
     }
     form {
-        width: 20%;
+        width: 30%;
         margin: auto;
     }
 
