@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('formacion_academica', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('perfil_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade'); // Relación con users
             $table->string('institucion');
             $table->string('titulo');
             $table->date('fecha_inicio');

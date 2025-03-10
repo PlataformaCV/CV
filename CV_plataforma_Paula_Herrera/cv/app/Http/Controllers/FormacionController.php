@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FormacionAcademica;
+use App\Models\User;
+use App\Models\Perfil;
 
 class FormacionController extends Controller
 {
@@ -21,8 +23,8 @@ class FormacionController extends Controller
      */
     public function create()
     {
-        
-        return view('formaciones.create');
+        $usuarios = User::all(); 
+        return view('formaciones.create', compact('usuarios'));
     }
 
     /**
@@ -30,7 +32,26 @@ class FormacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validaDatos=$request->validate([
+        'usuario_id'=>'required|integer|exists:users,id',
+        'institucion'=>'string|max:200',
+        'titulo'=>'string|max:50',
+        'fecha_inicio'=>'date',
+        'fecha_fin'=>'date'
+       ]);
+
+       $formacionAcademica=new FormacionAcademica();
+
+       $formacionAcademica->usuario_id=$validaDatos['usuario_id'];
+       $formacionAcademica->institucion=$validaDatos['institucion'];
+       $formacionAcademica->titulo=$validaDatos['titulo'];
+       $formacionAcademica->fecha_inicio=$validaDatos['fecha_inicio'];
+       $formacionAcademica->fecha_fin=$validaDatos['fecha_fin'];
+
+        $formacionAcademica->save();
+
+        return redirect()->route('formaciones.create')->with('succes','Se ha creado una fomación académica nueva!');
+
     }
 
     /**

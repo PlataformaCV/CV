@@ -25,9 +25,8 @@ class PerfilController extends Controller
     {
         // Obtener todos los usuarios
         $usuarios = User::all(); 
-        $perfiles=Perfil::all();
 
-        return view('perfiles.create', compact('usuarios', 'perfiles'));
+        return view('perfiles.create', compact('usuarios'));
     }
 
     // Método para almacenar un perfil en la base de datos
@@ -35,6 +34,7 @@ class PerfilController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
+            'usuario_id' => 'required|exists:users,id', 
             'nombre' => 'required',
             'profesion' => 'required',
             'descripcion' => 'required',
@@ -42,12 +42,12 @@ class PerfilController extends Controller
             'email' => 'required|email',
             'web' => 'required|url',
             'linkedin' => 'required|url',
-            'github' => 'required|url',
-            'usuario_id' => 'required|exists:users,id', 
+            'github' => 'required|url'
         ]);
 
         // Crear el perfil
         Perfil::create([
+            'usuario_id' => $request->usuario_id, 
             'nombre_completo' => $request->nombre,
             'profesion' => $request->profesion,
             'descripcion' => $request->descripcion,
@@ -55,8 +55,7 @@ class PerfilController extends Controller
             'email' => $request->email,
             'sitio_web' => $request->web,
             'linkedin' => $request->linkedin,
-            'github' => $request->github,
-            'usuario_id' => $request->usuario_id, 
+            'github' => $request->github
         ]);
 
         

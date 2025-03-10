@@ -27,7 +27,7 @@
         <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
         <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
         <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Lista de Perfiles</a>
+        <a href="{{ route('perfiles.index') }}">Perfiles</a>
     </nav>
 
     <h1 class="text-3xl font-semibold mb-6">Lista de Perfiles</h1>

@@ -45,6 +45,14 @@
         @csrf
         <h1>RELLENA TU CV</h1>
         <div>
+        <select name="usuario_id" id="usuario_id" class="block mt-1 w-full">
+                <option value="">Seleccione un usuario</option>
+                @foreach($usuarios as $usuario)
+                    <option type="text" value="{{$usuario->id}}">{{$usuario->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
             <x-input-label for="nombre">Nombre completo</x-input-label>
             <input id="nombre" required name="nombre" type="text" class="block mt-1 w-full" />
         </div>
@@ -75,14 +83,6 @@
         <div>
             <x-input-label for="github">GitHub</x-input-label>
             <input id="github" required name="github" type="url" class="block mt-1 w-full" />
-        </div>
-        <div>
-        <select name="usuario_id" id="usuario_id" class="block mt-1 w-full">
-                <option value="">Seleccione un usuario</option>
-                @foreach($usuarios as $usuario)
-                    <option type="text" value="{{$usuario->id}}">{{$usuario->name}}</option>
-                @endforeach
-            </select>
         </div>
         <x-primary-button type="submit">Agregar</x-primary-button>
     </form>

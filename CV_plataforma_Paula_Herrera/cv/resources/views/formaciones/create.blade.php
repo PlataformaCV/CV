@@ -6,17 +6,12 @@
         width: auto;
     }
     h1{
-        color:purple;
-        font-size:40px;
+        color:rgb(44, 76, 76);
+        font-size:30px;
         font-weight:bolde;
     }
-    .block{
-        font-size:17px;
-        font-weight:bold;
-        width:auto;
-    }
     form{
-        width:40%;
+        width:30%;
        margin:auto;
     }
     button{
@@ -62,26 +57,35 @@
         <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
         <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
         <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Lista de Perfiles</a>
+        <a href="{{ route('perfiles.index') }}">Perfiles</a>
     </nav>
+    
     <form method="POST" action="{{ route('formaciones.store') }}">
         @csrf
-        <h1>RELLENA TU FORMACIóN</h1>
+        <h1>RELLENA TU FORMACIÓN</h1>
         <div>
-            <x-input-label for="nombre">Institución</x-input-label>
-            <input id="nombre" required name="nombre" type="text" class="block mt-1 w-full" />
+        <select name="usuario_id" id="usuario_id" class="block mt-1 w-full">
+                <option value="">Seleccione un usuario</option>
+                @foreach($usuarios as $usuario)
+                    <option type="text" value="{{$usuario->id}}">{{$usuario->name}}</option>
+                @endforeach
+            </select>
         </div>
         <div>
-            <x-input-label for="profesion">Título</x-input-label>
-            <input id="profesion" required name="profesion" type="text" class="block mt-1 w-full" />
+            <x-input-label for="institucion">Institución</x-input-label>
+            <input id="institucion" required name="institucion" type="text" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="telefono">Fecha inicio</x-input-label>
-            <input id="telefono" required name="telefono" type="number" class="block mt-1 w-full" />
+            <x-input-label for="titulo">Título</x-input-label>
+            <input id="titulo" required name="titulo" type="text" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="email">Fecha fin</x-input-label>
-            <input id="email" name="email" type="email" class="block mt-1 w-full" />
+            <x-input-label for="fecha_inicio">Fecha inicio</x-input-label>
+            <input id="fecha_inicio" required name="fecha_inicio" type="date" class="block mt-1 w-full" />
+        </div>
+        <div>
+            <x-input-label for="fecha_fin">Fecha fin</x-input-label>
+            <input id="fecha_fin" name="fecha_fin" type="date" class="block mt-1 w-full" />
         </div>
         <x-primary-button type="submit">Agregar</x-primary-button>
     </form>

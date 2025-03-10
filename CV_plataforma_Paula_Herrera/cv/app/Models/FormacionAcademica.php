@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormacionAcademica extends Model
 {
-    //
+    protected $table = 'formacion_academica';
+    protected $fillable = [
+        'usuario_id',
+        'institucion',
+        'titulo',
+        'fecha_inicio',
+        'fecha_fin'
+    ];
 }
 
 // INSERT INTO formacion_academica (perfil_id, institucion, titulo, fecha_inicio, fecha_fin, created_at, updated_at) VALUES
