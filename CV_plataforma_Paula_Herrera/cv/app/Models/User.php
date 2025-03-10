@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
     return $this->hasOne(Perfil::class, 'usuario_id');
     }
+
+    public function experiencia()
+    {
+    return $this->hasOne(ExperienciaLaboral::class, 'usuario_id');
+    }
 }

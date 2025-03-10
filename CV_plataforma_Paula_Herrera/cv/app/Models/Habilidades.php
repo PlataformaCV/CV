@@ -8,11 +8,9 @@ class Habilidades extends Model
 {
     protected $fillable = [
         'perfil_id',
-        'empresa',
-        'puesto',
-        'fecha_inicio',
-        'fecha_fin',
-        'descripcion_actividades'];
+        'habilidad',
+        'nivel'
+    ];
 }
 
 
