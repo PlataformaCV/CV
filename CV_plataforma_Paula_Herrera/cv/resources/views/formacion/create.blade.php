@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('content')
 <style>
     div{
@@ -21,8 +22,49 @@
     button{
         margin-left:405;
     }
+
+    .menu{
+    background-color: rgb(44, 76, 76);
+    color: white;
+    text-align:center;
+    width: auto;
+    padding:20px;
+    }
+
+    .menu a{
+        padding:20px;
+    }
+    .menu a:hover{
+        color: rgb(44, 76, 76);
+        background-color: white;
+    }
+    .menu{
+    background-color: rgb(44, 76, 76);
+    color: white;
+    text-align:center;
+    width: auto;
+    padding:20px;
+}
+
+.menu a{
+    padding:20px;
+}
+.menu a:hover{
+    color: rgb(44, 76, 76);
+    background-color: white;
+}
 </style>
-    <form method="POST" action="{{ route('perfiles.store') }}">
+
+
+<div class="container mx-auto px-4">
+    <nav class="menu">
+        <a href="{{ route('perfiles.create') }}">Agregar perfil</a>
+        <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
+        <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
+        <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
+        <a href="{{ route('perfiles.index') }}">Lista de Perfiles</a>
+    </nav>
+    <form method="POST" action="{{ route('formaciones.store') }}">
         @csrf
         <h1>RELLENA TU FORMACIóN</h1>
         <div>

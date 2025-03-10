@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.menu{
+    background-color: rgb(44, 76, 76);
+    color: black;
+}
+
+.menu:hover{
+    color: rgb(44, 76, 76);
+    background-color: black;
+}

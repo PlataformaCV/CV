@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FormacionAcademica;
 
 class FormacionController extends Controller
 {
@@ -11,7 +12,8 @@ class FormacionController extends Controller
      */
     public function index()
     {
-        //
+        $formaciones=FormacionAcademica::all();
+        return view('formaciones.index', compact('formaciones'));
     }
 
     /**
@@ -19,7 +21,8 @@ class FormacionController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('formaciones.create');
     }
 
     /**

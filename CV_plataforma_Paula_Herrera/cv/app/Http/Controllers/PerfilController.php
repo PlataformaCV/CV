@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PerfilController extends Controller
 {
     /**
-     * Muestra una lista de los perfiles.
+     * Función que devuelve todos los cv
      */
     public function index()
 {
@@ -24,10 +24,9 @@ class PerfilController extends Controller
     public function create()
     {
         // Obtener todos los usuarios
-        $usuarios = User::all(); // Todos los usuarios disponibles para elegir
+        $usuarios = User::all(); 
         $perfiles=Perfil::all();
 
-        // Pasar los usuarios a la vista
         return view('perfiles.create', compact('usuarios', 'perfiles'));
     }
 
@@ -44,7 +43,7 @@ class PerfilController extends Controller
             'web' => 'required|url',
             'linkedin' => 'required|url',
             'github' => 'required|url',
-            'usuario_id' => 'required|exists:users,id', // Asegurarse de que el usuario exista
+            'usuario_id' => 'required|exists:users,id', 
         ]);
 
         // Crear el perfil
@@ -57,9 +56,10 @@ class PerfilController extends Controller
             'sitio_web' => $request->web,
             'linkedin' => $request->linkedin,
             'github' => $request->github,
-            'usuario_id' => $request->usuario_id, // Asignar el usuario seleccionado
+            'usuario_id' => $request->usuario_id, 
         ]);
 
+        
         // Redirigir al índice de perfiles con mensaje de éxito
         return redirect()->route('perfiles.index')->with('success', 'Perfil creado exitosamente');
     }
