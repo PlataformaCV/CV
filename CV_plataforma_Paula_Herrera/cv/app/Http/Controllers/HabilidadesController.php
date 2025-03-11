@@ -15,7 +15,7 @@ class HabilidadesController extends Controller
     public function index()
     {
         $habilidades= Habilidades::all();
-        return view('perfiles.index', compact('habilidades'));
+        return view('habilidades.index', compact('habilidades'));
     }
 
     /**
@@ -37,20 +37,24 @@ class HabilidadesController extends Controller
      */
     public function store(Request $request)
     {
-        $validarDatos=validate([
+        $validarDatos=$request->validate([
             'usuario_id'=>'required|exists:users,id',
-            'habilidad'=>'string|max:225',
-            'nivel'=>'string|max:111'
+            'nombre_habilidad'=>'string|max:225',
+            'nivel'=>'in:Basico,Intermedio,Avanzado,Experto'
         ]);
 
-        $habilidad=new Habilidad();
+        $habilidad=new Habilidades();
         $habilidad->usuario_id=$validarDatos['usuario_id'];
-        $habilidad->habilidad=$validarDatos['habilidad'];
+        $habilidad->nombre_habilidad=$validarDatos['nombre_habilidad'];
         $habilidad->nivel=$validarDatos['nivel'];
 
-        $habilidad->save();
-
-        return;
+        try {
+            $habilidad->save();
+            return redirect()->route('habilidades.index')->with('success', 'Habilidad creada exitosamente');
+        } catch (\Exception $e) {
+            // Manejar el error, por ejemplo, mostrando el mensaje en la vista
+            return back()->with('error', 'Hubo un problema al crear la habilidad');
+        }
     }
 
     /**
@@ -82,6 +86,9 @@ class HabilidadesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $habilidadEliminar=Habilidades::find($id);
+        $habilidadEliminar->delete();
+
+        return redirect()->route('habilidades.index');
     }
 }

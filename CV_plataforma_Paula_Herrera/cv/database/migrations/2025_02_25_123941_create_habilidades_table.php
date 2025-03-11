@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('habilidades', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('perfil_id')->constrained('users')->onDelete('cascade');
-            $table->string('habilidad');
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade'); // Relación con users
+            $table->string('nombre_habilidad');
             $table->enum('nivel',['Básico','Intermedio','Avanzado','Experto']);
             $table->timestamps();
         });

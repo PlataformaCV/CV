@@ -33,7 +33,7 @@ table{
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
 
-    <h1 class="text-3xl font-semibold mb-6">Experiencias laborales</h1>
+    <h1 class="text-3xl font-semibold mb-6">Proyectos</h1>
 
     {{-- Mensajes de éxito --}}
     @if (session('success'))
@@ -43,26 +43,28 @@ table{
     @endif
 
 <!-- Para agregar un perfil -->
-    <a href="{{route('habilidades.create')}}"><x-primary-button>Agregar habilidad</x-primary-button></a>
+    <a href="{{route('habilidades.create')}}"><x-primary-button>Agregar Proyecto</x-primary-button></a>
 
-    {{-- Tabla de habilidades --}}
+    {{-- Tabla de Proyectos --}}
     <div class="">
         <table class="min-w-full table-auto">
             <thead>
                 <tr class="bg-gray-100 text-gray-700">
                     <th class="px-4 py-2 text-left">Nombre</th>
-                    <th class="px-4 py-2 text-left">Habilidad</th>
-                    <th class="px-4 py-2 text-left">Nivel</th>
+                    <th class="px-4 py-2 text-left">Titulo</th>
+                    <th class="px-4 py-2 text-left">Descripcion</th>
+                    <th class="px-4 py-2 text-left">Enlace</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($habilidades as $habilidad)
+                @foreach ($proyectos as $proyecto)
                     <tr class="border-t">
-                            <td class="px-4 py-2">{{$habilidad->usuario->name}}</td>
-                        <td class="px-4 py-2">{{ $habilidad->nombre_habilidad}}</td>
-                        <td class="px-4 py-2">{{ $habilidad->nivel }}</td>
+                            <td class="px-4 py-2">{{$proyecto->usuario->name}}</td>
+                        <td class="px-4 py-2">{{ $proyecto->titulo}}</td>
+                        <td class="px-4 py-2">{{ $proyecto->descripcion }}</td>
+                        <td class="px-4 py-2">{{ $proyecto->enlace_proyecto }}</td>
                         <td class="px-4 py-2">
-                            <form action="{{ route('habilidades.destroy', $habilidad->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar esta habilidad?')">
+                            <form action="{{ route('proyectos.destroy', $proyecto->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar esta habilidad?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
@@ -75,7 +77,7 @@ table{
     </div>
 
     {{-- Si no hay usuarios --}}
-    @if ($habilidades->isEmpty())
+    @if ($proyectos->isEmpty())
         <p class="text-center text-muted">No hay habilidades creados aún en nigún usuario.</p>
     @endif
 </div>

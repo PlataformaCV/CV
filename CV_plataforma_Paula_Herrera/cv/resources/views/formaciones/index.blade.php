@@ -31,6 +31,7 @@ table{
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
+        <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
 
     <h1 class="text-3xl font-semibold mb-6">Listado de formaciones</h1>
@@ -61,12 +62,13 @@ table{
                 @foreach ($formaciones as $formacion)
                     <tr class="border-t">
                             <td class="px-4 py-2">{{$formacion->usuario->name}}</td>
-                        <td class="px-4 py-2">{{ $formacion->intitucion }}</td>
+                        <td class="px-4 py-2">{{ $formacion->institucion }}</td>
                         <td class="px-4 py-2">{{ $formacion->titulo_obtenido }}</td>
                         <td class="px-4 py-2">{{ $formacion->fecha_inicio }}</td>
                         <td class="px-4 py-2">{{ $formacion->fecha_fin }}</td>
                         <td class="px-4 py-2">
                             <a href="{{ route('formaciones.show', $formacion->id) }}" class="text-blue-600 hover:underline mr-2">Ver</a>
+                            <br>
                             <a href="{{ route('formaciones.edit', $formacion->id) }}" class="text-yellow-600 hover:underline mr-2">Actualizar</a>
                             <form action="{{ route('formaciones.destroy', $formacion->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar esta experiencia laboral?')">
                                 @csrf

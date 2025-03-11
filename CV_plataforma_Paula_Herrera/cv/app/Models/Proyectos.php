@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyectos extends Model
 {
-    //
+    protected $fillable = [
+        'usuario_id',
+        'titulo',
+        'enlace_proyecto'
+    ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
 
 // NSERT INTO proyectos (perfil_id, titulo, descripcion, enlace, created_at, updated_at) VALUES

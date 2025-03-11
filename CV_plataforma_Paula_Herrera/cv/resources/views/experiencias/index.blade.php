@@ -31,6 +31,7 @@ table{
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
+        <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
 
     <h1 class="text-3xl font-semibold mb-6">Experiencias laborales</h1>
@@ -68,8 +69,6 @@ table{
                         <td class="px-4 py-2">{{ $experiencia->fecha_fin }}</td>
                         <td class="px-4 py-2">{{ $experiencia->descripcion }}</td>
                         <td class="px-4 py-2">
-                            <a href="{{ route('experiencias.show', $experiencia->id) }}" class="text-blue-600 hover:underline mr-2">Ver</a>
-                            <a href="{{ route('experiencias.edit', $experiencia->id) }}" class="text-yellow-600 hover:underline mr-2">Actualizar</a>
                             <form action="{{ route('experiencias.destroy', $experiencia->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar esta experiencia laboral?')">
                                 @csrf
                                 @method('DELETE')

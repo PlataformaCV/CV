@@ -39,6 +39,7 @@
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
+        <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
     <form method="POST" action="{{ route('perfiles.store') }}">
         @csrf
@@ -60,7 +61,7 @@
             <input id="profesion" required name="profesion" type="text" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="sobremi">Descripción</x-input-label>
+            <x-input-label for="sobremi">Sobre mí</x-input-label>
             <textarea id="sobre_mi" required name="sobre_mi" class="block mt-1 w-full" rows="4"></textarea>
         </div>
         <div>

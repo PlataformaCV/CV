@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Habilidades extends Model
 {
     protected $fillable = [
-        'perfil_id',
-        'habilidad',
+        'usuario_id',
+        'nombre_habilidad',
         'nivel'
     ];
+    public function usuario()
+    {
+    return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
 
 

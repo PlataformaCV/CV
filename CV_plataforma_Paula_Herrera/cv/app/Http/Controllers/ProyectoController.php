@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proyectos;
 
 class ProyectoController extends Controller
 {
@@ -11,7 +12,8 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        //
+        $proyectos= Proyectos::all();
+        return view('proyectos.index', compact('proyectos'));
     }
 
     /**
@@ -59,6 +61,9 @@ class ProyectoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $proyecto = Proyectos::findOrFail($id);
+        $proyecto->delete();
+
+        return redirect()->route('proyectos.index');
     }
 }

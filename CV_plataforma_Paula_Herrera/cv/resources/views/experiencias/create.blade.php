@@ -51,6 +51,7 @@
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
+        <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
     <form method="POST" action="{{ route('experiencias.store') }}">
         @csrf
