@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\FormacionAcademica;
+use App\Models\Educacion;
 use App\Models\User;
 use App\Models\Perfil;
 
-class FormacionController extends Controller
+class EducacionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $formaciones=FormacionAcademica::all();
+        $formaciones=Educacion::all();
         return view('formaciones.index', compact('formaciones'));
     }
 
@@ -35,22 +35,22 @@ class FormacionController extends Controller
        $validaDatos=$request->validate([
         'usuario_id'=>'required|integer|exists:users,id',
         'institucion'=>'string|max:200',
-        'titulo'=>'string|max:50',
+        'titulo_obtenido'=>'string|max:50',
         'fecha_inicio'=>'date',
         'fecha_fin'=>'date'
        ]);
 
-       $formacionAcademica=new FormacionAcademica();
+       $formacionAcademica=new Educacion();
 
        $formacionAcademica->usuario_id=$validaDatos['usuario_id'];
        $formacionAcademica->institucion=$validaDatos['institucion'];
-       $formacionAcademica->titulo=$validaDatos['titulo'];
+       $formacionAcademica->titulo_obtenido=$validaDatos['titulo_obtenido'];
        $formacionAcademica->fecha_inicio=$validaDatos['fecha_inicio'];
        $formacionAcademica->fecha_fin=$validaDatos['fecha_fin'];
 
         $formacionAcademica->save();
 
-        return redirect()->route('formaciones.create')->with('succes','Se ha creado una fomación académica nueva!');
+        return redirect()->route('formaciones.index')->with('succes','Se ha creado una fomación académica nueva!');
 
     }
 
@@ -83,6 +83,10 @@ class FormacionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
+        $formacion = Educacion::find($id);
+        $formacion->delete();
+
+        return redirect()->route('formaciones.index');
     }
 }

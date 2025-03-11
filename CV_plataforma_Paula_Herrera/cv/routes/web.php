@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\FormacionController;
+use App\Http\Controllers\EducacionController;
 use App\Http\Controllers\HabilidadesController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\ExperienciaLaboralController;
@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('perfiles', PerfilController::class);
-Route::resource('formaciones', FormacionController::class);
+Route::resource('formaciones', EducacionController::class);
 Route::resource('habilidades', HabilidadesController::class);
 Route::resource('experiencias', ExperienciaLaboralController::class);
 Route::resource('proyectos', ProyectoController::class);

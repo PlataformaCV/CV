@@ -6,15 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExperienciaLaboral extends Model
 {
-    protected $table = 'experiencia_laboral';
+    protected $table = 'experiencias';
     protected $fillable = [
         'usuario_id',
         'empresa',
         'puesto',
         'fecha_inicio',
         'fecha_fin',
-        'descripcion_actividades'
+        'descripcion'
     ];
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
 
 

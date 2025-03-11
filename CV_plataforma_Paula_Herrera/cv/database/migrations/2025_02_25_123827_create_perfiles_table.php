@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade'); // Relación con users
             $table->string('nombre_completo');
             $table->string('profesion');
-            $table->text('descripcion');
+            $table->text('sobre_mi');
             $table->string('telefono')->nullable();
-            $table->string('email')->nullable();
+            $table->string('correo_electronico')->nullable();
             $table->string('sitio_web')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();

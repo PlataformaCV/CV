@@ -34,12 +34,11 @@
 </style>
 
 <div class="container mx-auto px-4">
-    <nav class="menu">
-        <a href="{{ route('perfiles.create') }}">Agregar perfil</a>
-        <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
-        <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
-        <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Lista de Perfiles</a>
+<nav class="menu">
+        <a href="{{ route('perfiles.index') }}">Perfil</a>
+        <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
+        <a href="{{route('formaciones.index')}}">Formación académica</a>
+        <a href="{{route('habilidades.index')}}">Habilidades</a>
     </nav>
     <form method="POST" action="{{ route('perfiles.store') }}">
         @csrf
@@ -61,16 +60,16 @@
             <input id="profesion" required name="profesion" type="text" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="descripcion">Descripción</x-input-label>
-            <textarea id="descripcion" required name="descripcion" class="block mt-1 w-full" rows="4"></textarea>
+            <x-input-label for="sobremi">Descripción</x-input-label>
+            <textarea id="sobre_mi" required name="sobre_mi" class="block mt-1 w-full" rows="4"></textarea>
         </div>
         <div>
             <x-input-label for="telefono">Teléfono</x-input-label>
             <input id="telefono" required name="telefono" type="number" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="email">Email</x-input-label>
-            <input id="email" required name="email" type="email" class="block mt-1 w-full" />
+            <x-input-label for="correo">Email</x-input-label>
+            <input id="correo_electronico" required name="correo_electronico" type="email" class="block mt-1 w-full" />
         </div>
         <div>
             <x-input-label for="web">Sitio web</x-input-label>

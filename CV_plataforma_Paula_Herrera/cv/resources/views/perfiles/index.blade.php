@@ -23,11 +23,10 @@
 
 <div class="container mx-auto px-4">
     <nav class="menu">
-        <a href="{{ route('perfiles.create') }}">Agregar perfil</a>
-        <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
-        <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
-        <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Perfiles</a>
+        <a href="{{ route('perfiles.index') }}">Perfil</a>
+        <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
+        <a href="{{route('formaciones.index')}}">Formación académica</a>
+        <a href="{{route('habilidades.index')}}">Habilidades</a>
     </nav>
 
     <h1 class="text-3xl font-semibold mb-6">Lista de Perfiles</h1>
@@ -38,6 +37,9 @@
             {{ session('success') }}
         </div>
     @endif
+
+<!-- Para agregar un perfil -->
+    <a href="{{route('perfiles.create')}}"><x-primary-button>Agregar un nuevo CV</x-primary-button></a>
 
     {{-- Tabla de Perfiles --}}
     <div class="overflow-x-auto bg-white shadow-sm sm:rounded-lg mb-6">

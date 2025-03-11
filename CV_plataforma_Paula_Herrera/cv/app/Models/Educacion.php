@@ -4,16 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FormacionAcademica extends Model
+class Educacion extends Model
 {
-    protected $table = 'formacion_academica';
+    protected $table = 'educaciones';
     protected $fillable = [
         'usuario_id',
         'institucion',
-        'titulo',
+        'titulo_obtenido',
         'fecha_inicio',
         'fecha_fin'
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
 
 // INSERT INTO formacion_academica (perfil_id, institucion, titulo, fecha_inicio, fecha_fin, created_at, updated_at) VALUES

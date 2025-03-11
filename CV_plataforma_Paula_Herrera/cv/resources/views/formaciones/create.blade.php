@@ -52,12 +52,11 @@
 
 
 <div class="container mx-auto px-4">
-    <nav class="menu">
-        <a href="{{ route('perfiles.create') }}">Agregar perfil</a>
-        <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
-        <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
-        <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Perfiles</a>
+<nav class="menu">
+        <a href="{{ route('perfiles.index') }}">Perfil</a>
+        <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
+        <a href="{{route('formaciones.index')}}">Formación académica</a>
+        <a href="{{route('habilidades.index')}}">Habilidades</a>
     </nav>
     
     <form method="POST" action="{{ route('formaciones.store') }}">
@@ -77,7 +76,7 @@
         </div>
         <div>
             <x-input-label for="titulo">Título</x-input-label>
-            <input id="titulo" required name="titulo" type="text" class="block mt-1 w-full" />
+            <input id="titulo_obtenido" required name="titulo_obtenido" type="text" class="block mt-1 w-full" />
         </div>
         <div>
             <x-input-label for="fecha_inicio">Fecha inicio</x-input-label>

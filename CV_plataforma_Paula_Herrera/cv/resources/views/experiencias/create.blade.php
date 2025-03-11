@@ -46,12 +46,11 @@
 
 
 <div class="container mx-auto px-4">
-    <nav class="menu">
-        <a href="{{ route('perfiles.create') }}">Agregar perfil</a>
-        <a href="{{route('experiencias.create')}}">Agregar experiencia laboral</a>
-        <a href="{{route('formaciones.create')}}">Agregar formación académica</a>
-        <a href="{{route('habilidades.create')}}">Agregar habilidades</a>
-        <a href="{{ route('perfiles.index') }}">Perfiles</a>
+<nav class="menu">
+        <a href="{{ route('perfiles.index') }}">Perfil</a>
+        <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
+        <a href="{{route('formaciones.index')}}">Formación académica</a>
+        <a href="{{route('habilidades.index')}}">Habilidades</a>
     </nav>
     <form method="POST" action="{{ route('experiencias.store') }}">
         @csrf
@@ -81,8 +80,8 @@
             <input id="fecha_fin" name="fecha_fin" type="date" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="descripcion_actividades">Describe tu actividad</x-input-label>
-            <textarea id="descripcion_actividades" name="descripcion_actividades" type="date" class="block mt-1 w-full"></textarea>
+            <x-input-label for="descripcion">Describe tu actividad</x-input-label>
+            <textarea id="descripcion" name="descripcion" type="date" class="block mt-1 w-full"></textarea>
         </div>
         <x-primary-button type="submit">Agregar</x-primary-button>
     </form>

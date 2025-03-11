@@ -37,9 +37,9 @@ class PerfilController extends Controller
             'usuario_id' => 'required|exists:users,id', 
             'nombre' => 'required',
             'profesion' => 'required',
-            'descripcion' => 'required',
+            'sobre_mi' => 'required',
             'telefono' => 'required',
-            'email' => 'required|email',
+            'correo_electronico' => 'required|email',
             'web' => 'required|url',
             'linkedin' => 'required|url',
             'github' => 'required|url'
@@ -50,9 +50,9 @@ class PerfilController extends Controller
             'usuario_id' => $request->usuario_id, 
             'nombre_completo' => $request->nombre,
             'profesion' => $request->profesion,
-            'descripcion' => $request->descripcion,
+            'sobre_mi' => $request->sobre_mi,
             'telefono' => $request->telefono,
-            'email' => $request->email,
+            'correo_electronico' => $request->correo_electronico,
             'sitio_web' => $request->web,
             'linkedin' => $request->linkedin,
             'github' => $request->github
@@ -93,9 +93,9 @@ class PerfilController extends Controller
         $validate = $request->validate([
             'nombre_completo' => 'required|string|max:255',
             'profesion' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:255',
+            'sobre_mi' => 'required|string|max:255',
             'telefono' => 'required|string|max:10',
-            'email' => 'required|string|max:255',
+            'correo_electronico' => 'required|string|max:255',
             'sitio_web' => 'required|string|max:255',
             'linkedin' => 'required|string|max:255',
             'github' => 'required|string|max:255'
@@ -103,9 +103,9 @@ class PerfilController extends Controller
 
         $perfil->nombre_completo = $validate['nombre_completo'];
         $perfil->profesion = $validate['profesion'];
-        $perfil->descripcion = $validate['descripcion'];
+        $perfil->sobre_mi = $validate['sobre_mi'];
         $perfil->telefono = $validate['telefono'];
-        $perfil->email = $validate['email'];
+        $perfil->correo_electronico = $validate['correo_electronico'];
         $perfil->sitio_web = $validate['sitio_web'];
         $perfil->linkedin = $validate['linkedin'];
         $perfil->github = $validate['github'];

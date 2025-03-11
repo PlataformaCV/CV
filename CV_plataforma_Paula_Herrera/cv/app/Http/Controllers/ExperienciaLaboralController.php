@@ -14,8 +14,9 @@ class ExperienciaLaboralController extends Controller
      */
     public function index()
     {
+        $usuarios=User::all();
         $experiencias=ExperienciaLaboral::all();
-        return view('experiencias.create', compact('experiencias'));
+        return view('experiencias.index', compact('experiencias', 'usuarios'));
     }
 
     /**
@@ -38,7 +39,7 @@ class ExperienciaLaboralController extends Controller
             'puesto'=>'string|max:50',
             'fecha_inicio'=>'date',
             'fecha_fin'=>'date',
-            'descripcion_actividades'=>'string|max:300'
+            'descripcion'=>'string|max:300'
            ]);
     
            $experienciaLaboral=new ExperienciaLaboral();
@@ -48,11 +49,11 @@ class ExperienciaLaboralController extends Controller
            $experienciaLaboral->puesto=$validaDatos['puesto'];
            $experienciaLaboral->fecha_inicio=$validaDatos['fecha_inicio'];
            $experienciaLaboral->fecha_fin=$validaDatos['fecha_fin'];
-           $experienciaLaboral->descripcion_actividades=$validaDatos['descripcion_actividades'];
+           $experienciaLaboral->descripcion=$validaDatos['descripcion'];
     
             $experienciaLaboral->save();
     
-            return redirect()->route('experiencias.create')->with('succes','Se ha insertado una experiencia laboral académica nueva!');
+            return redirect()->route('experiencias.index')->with('succes','Se ha insertado una experiencia laboral académica nueva!');
 
     }
 
@@ -85,6 +86,9 @@ class ExperienciaLaboralController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $experiencia = ExperienciaLaboral::findOrFail($id);
+        $experiencia->delete();
+
+        return redirect()->route('experiencias.index');
     }
 }
