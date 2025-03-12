@@ -62,8 +62,6 @@ table{
                         <td class="px-4 py-2">{{ $habilidad->nombre_habilidad }}</td>
                         <td class="px-4 py-2">{{ $habilidad->nivel }}</td>
                         <td class="px-4 py-2">
-                            <a href="{{ route('habilidades.show', $habilidad->id) }}" class="text-blue-600 hover:underline mr-2">Ver</a>
-                            <a href="{{ route('habilidades.edit', $habilidad->id) }}" class="text-yellow-600 hover:underline mr-2">Actualizar</a>
                             <form action="{{ route('habilidades.destroy', $habilidad->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar esta habilidad laboral?')">
                                 @csrf
                                 @method('DELETE')

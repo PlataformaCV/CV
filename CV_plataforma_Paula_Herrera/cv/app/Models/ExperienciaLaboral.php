@@ -19,6 +19,10 @@ class ExperienciaLaboral extends Model
     {
         return $this->belongsTo(User::class, 'usuario_id');
     }
+
+    public function perfil(){
+        return $this->belongsTo(Perfil::class, 'usuario_id');
+    }
 }
 
 

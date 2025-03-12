@@ -55,7 +55,6 @@
                     <h3 class="text-xl font-semibold">{{ $perfil->nombre_completo }}</h3>
                     <span class="text-sm text-gray-500">{{ $perfil->profesion }}</span>
                 </div>
-
                 <!-- propiedades del perfil -->
                 <div class="mb-4">
                     <strong class="text-gray-700">Profesión:</strong>
@@ -94,6 +93,80 @@
                 <div class="mb-4">
                     <strong class="text-gray-700">Usuario:</strong>
                     <p>{{ $perfil->usuario ? $perfil->usuario->name : 'No asignado' }}</p>
+                </div>
+                <hr>
+                <br>
+                <hr>
+                <!-- buscar fiormaciones a partir de la tabla perfiles, usando forelse, con esto no se usa if , seusa empty, cosa que en el foreach si -->
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <div class="mb-4">
+                        <strong class="text-gray-700">FORMACIONES</strong>
+                        <br>
+                        <br>
+                        @forelse ($perfil->formaciones as $formacion)
+                            <div class="mb-2">
+                                <strong class="text-gray-700">Institución:</strong>
+                                <p>{{ $formacion->institucion ?? 'No especificado' }}</p>
+                                <strong class="text-gray-700">Título:</strong>
+                                <p>{{ $formacion->titulo_obtenido ?? 'No especificado' }}</p>
+                            </div>
+                        @empty
+                            <p>No hay formaciones registradas.</p>
+                        @endforelse
+                    </div>
+                </div>
+               <br>
+               <!-- Usando for each  -->
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <div class="mb-4">
+                        <strong class="text-gray-700">HABILIDADES</strong>
+                        <br>
+                        <br>
+                        @foreach($perfil->habilidades as $habilidad)
+                                <div class="mb-2">
+                                    <p>{{ $habilidad->nombre_habilidad ?? 'No especificado' }} - {{ $habilidad->nivel ?? 'No especificado' }}</p>
+                                </div>
+                            @if($perfil->habilidades->isEmpty())
+                                <p>No hay habilidades registradas.</p>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <br>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <div class="mb-4">
+                        <strong class="text-gray-700">EXPERIENCIA LABORAL</strong>
+                        <br>
+                        <br>
+                        @foreach($perfil->experiencias as $experiencia)
+                                <div class="mb-2">
+                                    <strong class="text-gray-700">Empresa:</strong>
+                                    <p>{{ $experiencia->empresa ?? 'No especificado' }}      ({{$experiencia->fecha_inicio}} hasta {{$experiencia->fecha_fin}})</p>
+                                    <strong class="text-gray-700">Puesto:</strong>
+                                    <p>{{$experiencia->puesto }}</p>
+                                </div>
+                            @if($perfil->experiencias->isEmpty())
+                                <p>No hay experiencia laboral aún.</p>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <br>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <div class="mb-4">
+                        <strong class="text-gray-700">PROYECTOS</strong>
+                        <br>
+                        <br>
+                        @foreach($perfil->proyectos as $proyecto)
+                                <div class="mb-2">
+                                    <strong class="text-gray-700">{{$proyecto->enlace_proyecto}}</strong>
+                                    <br>
+                                </div>
+                            @if($perfil->proyectos->isEmpty())
+                                <p>No hay proyectos aún.</p>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
 
                 <!-- Acciones -->

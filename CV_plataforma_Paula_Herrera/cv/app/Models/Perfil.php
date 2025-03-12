@@ -29,6 +29,31 @@ public function usuario()
     {
     return $this->belongsTo(User::class, 'usuario_id');
     }
+
+    
+public function formaciones()
+{
+return $this->hasMany(Educacion::class, 'usuario_id');
+}
+
+public function habilidades()
+{
+    return $this->hasMany(Habilidades::class, 'usuario_id');
+}
+
+public function experiencias()
+{
+    return $this->hasMany(ExperienciaLaboral::class, 'usuario_id');
+}
+
+// cuando acceda a perfil quiero que me deje acceder a proyectos
+
+public function proyectos()
+{
+    return $this->hasMany(Proyectos::class, 'usuario_id');
+}
+
+
 }
 
 

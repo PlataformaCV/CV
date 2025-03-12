@@ -16,6 +16,10 @@ class Proyectos extends Model
     {
         return $this->belongsTo(User::class, 'usuario_id');
     }
+
+    public function perfil(){
+        return $this->belongTo(Perfil::class,'usuario_id');
+    }
 }
 
 // NSERT INTO proyectos (perfil_id, titulo, descripcion, enlace, created_at, updated_at) VALUES

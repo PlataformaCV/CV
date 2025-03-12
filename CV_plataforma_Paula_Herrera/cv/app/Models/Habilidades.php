@@ -15,12 +15,12 @@ class Habilidades extends Model
     {
     return $this->belongsTo(User::class, 'usuario_id');
     }
+
+    // relacion que une la tabla habilidades con perfiles para poder usarlo en el index directamente //A habilidades le pertenece 1 perfil
+    public function perfil()
+    {
+        return $this->belongsTo(Perfil::class, 'usuario_id');
+    }
 }
 
 
-// INSERT INTO habilidades (perfil_id, habilidad, nivel, created_at, updated_at) VALUES
-// (1, 'PHP', 'Avanzado', NOW(), NOW()),
-// (1, 'Laravel', 'Avanzado', NOW(), NOW()),
-// (1, 'JavaScript', 'Intermedio', NOW(), NOW()),
-// (1, 'Vue.js', 'Intermedio', NOW(), NOW()),
-// (1, 'SQL', 'Avanzado', NOW(), NOW());
