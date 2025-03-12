@@ -21,6 +21,10 @@
 table{
     margin:auto;
 }
+
+.centro{
+    text-align:center;
+}
 </style>
 
 
@@ -32,10 +36,10 @@ table{
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
-    <br>  
+    <br>
     <h1 class="text-3xl font-semibold mb-6">Proyectos</h1>
 
-    {{-- Mensajes de éxito --}}
+    <!--  Mensajes de éxito -->
     @if (session('success'))
         <div class="alert alert-success bg-green-200 text-green-800 p-4 mb-4 rounded-md">
             {{ session('success') }}

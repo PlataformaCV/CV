@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proyectos;
+use App\Models\User;
 
 class ProyectoController extends Controller
 {
@@ -21,7 +22,9 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        //
+        $proyectos=Proyectos::all();
+        $usuarios= User::all();
+        return view('proyectos.create', compact('proyectos', 'usuarios'));
     }
 
     /**
@@ -29,7 +32,26 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validarDatos=$request->validate([
+            'usuario_id'=>'required|exists:users,id',
+            'titulo'=>'required|string|max:223',
+            'descripcion'=>'string|max:225',
+            'enlace_proyecto'=>'string|max:225'
+        ]);
+
+        $proyectos=new Proyectos();
+        $proyectos->usuario_id=$validarDatos['usuario_id'];
+        $proyectos->titulo=$validarDatos['titulo'];
+        $proyectos->descripcion=$validarDatos['descripcion'];
+        $proyectos->enlace_proyecto=$validarDatos['enlace_proyecto'];
+
+        try {
+            $proyectos->save();
+            return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente');
+        } catch (\Exception $e) {
+            // Manejar el error, por ejemplo, mostrando el mensaje en la vista
+            return back()->with('error', 'Hubo un problema al crear el proyecto');
+        }
     }
 
     /**

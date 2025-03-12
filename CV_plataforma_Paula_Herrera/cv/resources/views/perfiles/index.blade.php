@@ -40,8 +40,8 @@
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
-    <br>    
-    <h1 class="text-3xl font-semibold mb-6 text-center">Lista de Perfiles</h1>
+    <br>
+    <h1 class="text-3xl font-semibold mb-6 centro text-center">Lista de Perfiles</h1>
 
     {{-- Mensajes de éxito --}}
     @if (session('success'))
@@ -51,7 +51,7 @@
     @endif
 
     <!-- Botón para agregar un perfil -->
-    <div class="text-center mb-6">
+    <div class="text-center centro mb-6">
         <a href="{{ route('perfiles.create') }}">
             <x-primary-button class="bg-blue-500 hover:bg-blue-600">Agregar un nuevo CV</x-primary-button>
         </a>
