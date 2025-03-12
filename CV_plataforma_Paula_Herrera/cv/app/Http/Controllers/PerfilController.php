@@ -13,7 +13,6 @@ class PerfilController extends Controller
      */
     public function index()
 {
-    // Obtener todos los perfiles
     $perfiles = Perfil::all(); 
     $usuarios = User::all();
 
@@ -23,44 +22,47 @@ class PerfilController extends Controller
 
     public function create()
     {
-        // Obtener todos los usuarios
-        $usuarios = User::all(); 
+        $usuarios = User::all();
+        $usuario = auth()->user();
 
-        return view('perfiles.create', compact('usuarios'));
+        // Verificar si el usuario ya tiene un perfil
+        $perfil = Perfil::where('usuario_id', $usuario->id)->first();
+        if($perfil){
+            return redirect()->route('perfiles.index')->with('success', 'Ya tiene un CV creado, actualicelo!');
+        }else{
+            return view('perfiles.create', compact('usuarios'));
+        }
     }
 
     // Método para almacenar un perfil en la base de datos
     public function store(Request $request)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'usuario_id' => 'required|exists:users,id', 
-            'nombre' => 'required',
-            'profesion' => 'required',
-            'sobre_mi' => 'required',
-            'telefono' => 'required',
-            'correo_electronico' => 'required|email',
-            'web' => 'required|url',
-            'linkedin' => 'required|url',
-            'github' => 'required|url'
-        ]);
-
-        // Crear el perfil
-        Perfil::create([
-            'usuario_id' => $request->usuario_id, 
-            'nombre_completo' => $request->nombre,
-            'profesion' => $request->profesion,
-            'sobre_mi' => $request->sobre_mi,
-            'telefono' => $request->telefono,
-            'correo_electronico' => $request->correo_electronico,
-            'sitio_web' => $request->web,
-            'linkedin' => $request->linkedin,
-            'github' => $request->github
-        ]);
-
-        
-        // Redirigir al índice de perfiles con mensaje de éxito
-        return redirect()->route('perfiles.index')->with('success', 'Perfil creado exitosamente');
+       // Validar los datos del formulario
+            $request->validate([
+                'usuario_id' => 'required|exists:users,id', 
+                'nombre' => 'required',
+                'profesion' => 'required',
+                'sobre_mi' => 'required',
+                'telefono' => 'required',
+                'correo_electronico' => 'required|email',
+                'web' => 'required|url',
+                'linkedin' => 'required|url',
+                'github' => 'required|url'
+            ]);
+            Perfil::create([
+                'usuario_id' => $request->usuario_id, 
+                'nombre_completo' => $request->nombre,
+                'profesion' => $request->profesion,
+                'sobre_mi' => $request->sobre_mi,
+                'telefono' => $request->telefono,
+                'correo_electronico' => $request->correo_electronico,
+                'sitio_web' => $request->web,
+                'linkedin' => $request->linkedin,
+                'github' => $request->github
+            ]);
+    
+            return redirect()->route('perfiles.index')->with('success', 'Perfil creado exitosamente!');
+            
     }
 
     
