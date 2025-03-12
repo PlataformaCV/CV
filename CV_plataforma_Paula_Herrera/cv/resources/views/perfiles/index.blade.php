@@ -19,6 +19,16 @@
     background-color: white;
 }
 
+.divperfiles{
+    width: 70%;
+    margin:auto;
+
+}
+
+.centro{
+    text-align:center;
+}
+
 </style>
 
 <div class="container mx-auto px-4">
@@ -48,11 +58,11 @@
     </div>
 
     {{-- Visualización de perfiles --}}
-    <div class=" grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="divperfiles grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($perfiles as $perfil)
             <div class="bg-white shadow-lg rounded-lg p-4">
                 <div class="flex justify-between items-center border-b pb-4 mb-4">
-                    <h3 class="text-xl font-semibold">{{ $perfil->nombre_completo }}</h3>
+                    <h3 class="text-xl font-semibold centro">{{ $perfil->nombre_completo }}</h3>
                     <span class="text-sm text-gray-500">{{ $perfil->profesion }}</span>
                 </div>
                 <!-- propiedades del perfil -->
@@ -89,7 +99,6 @@
                     <strong class="text-gray-700">GitHub:</strong>
                     <p>{{ $perfil->github }}</p>
                 </div>
-
                 <div class="mb-4">
                     <strong class="text-gray-700">Usuario:</strong>
                     <p>{{ $perfil->usuario ? $perfil->usuario->name : 'No asignado' }}</p>

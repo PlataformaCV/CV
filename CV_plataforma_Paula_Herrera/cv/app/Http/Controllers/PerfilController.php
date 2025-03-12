@@ -25,7 +25,7 @@ class PerfilController extends Controller
         $usuarios = User::all();
         $usuario = auth()->user();
 
-        // Verificar si el usuario ya tiene un perfil
+        // Verificar si el usuario ya tiene un perfil, ya que solo se puede crear un cv por usuario
         $perfil = Perfil::where('usuario_id', $usuario->id)->first();
         if($perfil){
             return redirect()->route('perfiles.index')->with('success', 'Ya tiene un CV creado, actualicelo!');
