@@ -61,7 +61,7 @@
             <input id="profesion" required name="profesion" type="text" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="sobremi">Sobre mí</x-input-label>
+            <x-input-label for="sobre_mi">Sobre mí</x-input-label>
             <textarea id="sobre_mi" required name="sobre_mi" class="block mt-1 w-full" rows="4"></textarea>
         </div>
         <div>

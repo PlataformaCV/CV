@@ -13,7 +13,7 @@ class PerfilController extends Controller
      */
     public function index()
 {
-    $perfiles = Perfil::all(); 
+    $perfiles = Perfil::all();
     $usuarios = User::all();
 
     // Pasar los perfiles a la vista
@@ -39,7 +39,7 @@ class PerfilController extends Controller
     {
        // Validar los datos del formulario
             $request->validate([
-                'usuario_id' => 'required|exists:users,id', 
+                'usuario_id' => 'required|exists:users,id',
                 'nombre' => 'required',
                 'profesion' => 'required',
                 'sobre_mi' => 'required',
@@ -50,7 +50,7 @@ class PerfilController extends Controller
                 'github' => 'required|url'
             ]);
             Perfil::create([
-                'usuario_id' => $request->usuario_id, 
+                'usuario_id' => $request->usuario_id,
                 'nombre_completo' => $request->nombre,
                 'profesion' => $request->profesion,
                 'sobre_mi' => $request->sobre_mi,
@@ -60,12 +60,12 @@ class PerfilController extends Controller
                 'linkedin' => $request->linkedin,
                 'github' => $request->github
             ]);
-    
+
             return redirect()->route('perfiles.index')->with('success', 'Perfil creado exitosamente!');
-            
+
     }
 
-    
+
 
     /**
      * Muestra un perfil específico.
@@ -93,6 +93,7 @@ class PerfilController extends Controller
         $perfil = Perfil::findOrFail($id);
 
         $validate = $request->validate([
+            'usuario_id' =>'required|exists:users,id',
             'nombre_completo' => 'required|string|max:255',
             'profesion' => 'required|string|max:255',
             'sobre_mi' => 'required|string|max:255',
@@ -103,6 +104,7 @@ class PerfilController extends Controller
             'github' => 'required|string|max:255'
         ]);
 
+        $perfil->usuario_id=$validate['usuario_id'];
         $perfil->nombre_completo = $validate['nombre_completo'];
         $perfil->profesion = $validate['profesion'];
         $perfil->sobre_mi = $validate['sobre_mi'];
@@ -114,7 +116,7 @@ class PerfilController extends Controller
 
         $perfil->save();
 
-        return redirect()->route('perfiles.index');
+        return redirect()->route('perfiles.index')->with('success', 'Perfil actualizado correctamente');
     }
 
     /**
