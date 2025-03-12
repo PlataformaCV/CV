@@ -32,7 +32,7 @@ table{
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
-
+    <br>  
     <h1 class="text-3xl font-semibold mb-6">Proyectos</h1>
 
     {{-- Mensajes de éxito --}}
@@ -43,7 +43,7 @@ table{
     @endif
 
 <!-- Para agregar un perfil -->
-    <a href="{{route('habilidades.create')}}"><x-primary-button>Agregar Proyecto</x-primary-button></a>
+    <a href="{{route('proyectos.create')}}"><x-primary-button>Agregar Proyecto</x-primary-button></a>
 
     {{-- Tabla de Proyectos --}}
     <div class="">

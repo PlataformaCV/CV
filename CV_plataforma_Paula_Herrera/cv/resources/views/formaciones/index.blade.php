@@ -33,7 +33,7 @@ table{
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
-
+    <br>  
     <h1 class="text-3xl font-semibold mb-6">Listado de formaciones</h1>
 
     {{-- Mensajes de éxito --}}

@@ -53,6 +53,7 @@
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
+    <br>
     <form method="POST" action="{{ route('experiencias.store') }}">
         @csrf
         <h1>RELLENA TU EXPERIENCIA</h1>

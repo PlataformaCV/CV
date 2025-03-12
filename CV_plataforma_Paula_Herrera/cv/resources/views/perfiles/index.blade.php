@@ -3,28 +3,22 @@
 @section('content')
 
 <style>
-    .menu {
-        background-color: rgb(44, 76, 76);
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
+.menu{
+    background-color: rgb(44, 76, 76);
+    color: white;
+    text-align:center;
+    width: auto;
+    padding:20px;
+}
 
-    .menu a {
-        padding: 10px 20px;
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+.menu a{
+    padding:20px;
+}
+.menu a:hover{
+    color: rgb(44, 76, 76);
+    background-color: white;
+}
 
-    .menu a:hover {
-        background-color: white;
-        color: rgb(44, 76, 76);
-    }
-
-    .cv{
-        align-items:center;
-    }
 </style>
 
 <div class="container mx-auto px-4">
@@ -36,7 +30,7 @@
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
     </nav>
-
+    <br>    
     <h1 class="text-3xl font-semibold mb-6 text-center">Lista de Perfiles</h1>
 
     {{-- Mensajes de éxito --}}
@@ -112,9 +106,9 @@
                     </form>
                 </div>
             </div>
+            <br><br>
         @endforeach
     </div>
-
     {{-- Si no hay perfiles --}}
     @if ($perfiles->isEmpty())
         <p class="text-center text-gray-500">No hay perfiles creados aún.</p>
