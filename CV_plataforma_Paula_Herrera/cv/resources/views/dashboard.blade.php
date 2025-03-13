@@ -12,7 +12,7 @@
                     {{ __("You're logged in!") }}
 
                     <!-- Enlace para ver la lista de perfiles -->
-                    <a href="{{ route('perfiles.index') }}" class="text-blue-600 hover:underline">
+                    <a href="{{ route('perfiles.show') }}" class="text-blue-600 hover:underline">
                         Ver Perfiles
                     </a>
                 </div>

@@ -14,6 +14,7 @@ class PerfilController extends Controller
     public function index()
 {
     $perfiles = Perfil::all();
+    // dd($perfiles);
     $usuarios = User::all();
 
     // Pasar los perfiles a la vista

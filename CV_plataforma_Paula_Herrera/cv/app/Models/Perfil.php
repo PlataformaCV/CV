@@ -27,26 +27,29 @@ public function usuario()
     return $this->belongsTo(User::class, 'usuario_id');
     }
 
+
+    // debo poner la clave foránea de la tabla educaciones-> usuario_id y la clave primaria d ela tabla actual (perfil) desde la que quiero acceder ->usuario_id, sino no lo pinta
     public function formaciones()
-{
-return $this->hasMany(Educacion::class, 'usuario_id');
-}
+    {
+        return $this->hasMany(Educacion::class, 'usuario_id', 'usuario_id');
+    }
+    
 
 public function habilidades()
 {
-    return $this->hasMany(Habilidades::class, 'usuario_id');
+    return $this->hasMany(Habilidades::class,  'usuario_id', 'usuario_id');
 }
 
 public function experiencias()
 {
-    return $this->hasMany(ExperienciaLaboral::class, 'usuario_id');
+    return $this->hasMany(ExperienciaLaboral::class,  'usuario_id', 'usuario_id');
 }
 
 // cuando acceda a perfil quiero que me deje acceder a proyectos
 
 public function proyectos()
 {
-    return $this->hasMany(Proyectos::class, 'usuario_id');
+    return $this->hasMany(Proyectos::class,  'usuario_id', 'usuario_id');
 }
 
 }

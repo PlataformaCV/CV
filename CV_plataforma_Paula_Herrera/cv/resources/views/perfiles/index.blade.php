@@ -100,10 +100,11 @@
                 <hr>
                 <br>
                 <hr>
-                <!-- buscar fiormaciones a partir de la tabla perfiles, usando forelse, con esto no se usa if , seusa empty, cosa que en el foreach si -->
+                <!-- Formaciones -->
                 <div class="bg-white shadow-lg rounded-lg p-4">
                     <div class="mb-4">
-                        <strong class="text-gray-700">FORMACIONES</strong>
+                    <!-- <pre>{{ var_dump($perfil->formaciones) }}</pre> -->
+                        <strong class="text-gray-700">Formaciones</strong>
                         <br>
                         <br>
                         @forelse($perfil->formaciones as $formacion)
@@ -119,65 +120,62 @@
                     </div>
                 </div>
                <br>
-               <!-- Usando for each  -->
+               <!-- Habilidades -->
                 <div class="bg-white shadow-lg rounded-lg p-4">
                     <div class="mb-4">
-                        <strong class="text-gray-700">HABILIDADES</strong>
+                        <strong class="text-gray-700">Habilidades</strong>
                         <br>
                         <br>
-                        @foreach($perfil->habilidades as $habilidad)
-                                <div class="mb-2">
-                                    <p>{{ $habilidad->nombre_habilidad ?? 'No especificado' }} - {{ $habilidad->nivel ?? 'No especificado' }}</p>
-                                </div>
-                            @if($perfil->habilidades->isEmpty())
-                                <p>No hay habilidades registradas.</p>
-                            @endif
-                        @endforeach
+                        @forelse($perfil->habilidades as $habilidad)
+                            <div class="mb-2">
+                                <p>{{ $habilidad->nombre_habilidad ?? 'No especificado' }} - {{ $habilidad->nivel ?? 'No especificado' }}</p>
+                            </div>
+                        @empty
+                            <p>No hay habilidades registradas.</p>
+                        @endforelse
                     </div>
                 </div>
                 <br>
+                <!-- Experiencia laboral -->
                 <div class="bg-white shadow-lg rounded-lg p-4">
                     <div class="mb-4">
-                        <strong class="text-gray-700">EXPERIENCIA LABORAL</strong>
+                        <strong class="text-gray-700">Experiencia Laboral</strong>
                         <br>
                         <br>
-                        @foreach($perfil->experiencias as $experiencia)
-                                <div class="mb-2">
-                                    <strong class="text-gray-700">Empresa:</strong>
-                                    <p>{{ $experiencia->empresa ?? 'No especificado' }}      ({{$experiencia->fecha_inicio}} hasta {{$experiencia->fecha_fin}})</p>
-                                    <strong class="text-gray-700">Puesto:</strong>
-                                    <p>{{$experiencia->puesto }}</p>
-                                </div>
-                            @if($perfil->experiencias->isEmpty())
-                                <p>No hay experiencia laboral aún.</p>
-                            @endif
-                        @endforeach
+                        @forelse($perfil->experiencias as $experiencia)
+                            <div class="mb-2">
+                                <strong class="text-gray-700">Empresa:</strong>
+                                <p>{{ $experiencia->empresa ?? 'No especificado' }} ({{ $experiencia->fecha_inicio }} hasta {{ $experiencia->fecha_fin }})</p>
+                                <strong class="text-gray-700">Puesto:</strong>
+                                <p>{{ $experiencia->puesto }}</p>
+                            </div>
+                        @empty
+                            <p>No hay experiencia laboral registrada.</p>
+                        @endforelse
                     </div>
                 </div>
                 <br>
+                <!-- Proyectos -->
                 <div class="bg-white shadow-lg rounded-lg p-4">
                     <div class="mb-4">
-                        <strong class="text-gray-700">PROYECTOS</strong>
+                        <strong class="text-gray-700">Proyectos</strong>
                         <br>
                         <br>
-                        @foreach($perfil->proyectos as $proyecto)
-                                <div class="mb-2">
-                                    <strong class="text-gray-700">{{$proyecto->enlace_proyecto}}</strong>
-                                    <br>
-                                </div>
-                            @if($perfil->proyectos->isEmpty())
-                                <p>No hay proyectos aún.</p>
-                            @endif
-                        @endforeach
+                        @forelse($perfil->proyectos as $proyecto)
+                            <div class="mb-2">
+                                <strong class="text-gray-700">Enlace del Proyecto:</strong>
+                                <p>{{ $proyecto->enlace_proyecto }}</p>
+                            </div>
+                        @empty
+                            <p>No hay proyectos registrados.</p>
+                        @endforelse
                     </div>
                 </div>
-
-                <!-- Acciones -->
-               
             </div>
             <br><br>
         @endforeach
     </div>
+
     {{-- Si no hay perfiles --}}
     @if ($perfiles->isEmpty())
         <p class="text-center text-gray-500">No hay perfiles creados aún.</p>
