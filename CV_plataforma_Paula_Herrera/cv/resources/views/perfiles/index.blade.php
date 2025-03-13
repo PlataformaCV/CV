@@ -34,7 +34,7 @@
 <div class="container mx-auto px-4">
     <!-- Menú de navegación -->
     <nav class="menu">
-        <a href="{{ route('perfiles.index') }}">Mi CV</a>
+        <a href="{{ route('perfiles.show') }}">Mi CV</a>
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
@@ -50,13 +50,6 @@
             {{ session('success') }}
         </div>
     @endif
-
-    <!-- Botón para agregar un perfil -->
-    <div class="text-center centro mb-6">
-        <a href="{{ route('perfiles.create') }}">
-            <x-primary-button class="bg-blue-500 hover:bg-blue-600">Agregar un nuevo CV</x-primary-button>
-        </a>
-    </div>
 
     {{-- Visualización de perfiles --}}
     <div class="divperfiles grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -28,7 +28,7 @@ class PerfilController extends Controller
         // Verificar si el usuario ya tiene un perfil, ya que solo se puede crear un cv por usuario
         $perfil = Perfil::where('usuario_id', $usuario->id)->first();
         if($perfil){
-            return redirect()->route('perfiles.index')->with('success', 'Ya tiene un CV creado, actualicelo!');
+            return redirect()->route('perfiles.show')->with('success', 'Ya tiene un CV creado, actualicelo!');
         }else{
             return view('perfiles.create', compact('usuarios'));
         }
@@ -61,7 +61,7 @@ class PerfilController extends Controller
                 'github' => $request->github
             ]);
 
-            return redirect()->route('perfiles.index')->with('success', 'Perfil creado exitosamente!');
+            return redirect()->route('perfiles.show')->with('success', 'Perfil creado exitosamente!');
 
     }
 
@@ -130,11 +130,19 @@ class PerfilController extends Controller
     /**
      * Elimina un perfil de la base de datos.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        $perfil = Perfil::findOrFail($id);
-        $perfil->delete();
-
-        return redirect()->route('perfiles.index');
+        // Obtener el perfil del usuario autenticado
+        $perfil = auth()->user()->perfil;
+    
+        // Verificar si el perfil existe
+        if ($perfil) {
+            // Eliminar el perfil
+            $perfil->delete();
+            return redirect()->route('perfiles.show')->with('success', 'Perfil eliminado correctamente.');
+        } else {
+            return redirect()->route('perfiles.show')->with('error', 'No se encontró el perfil.');
+        }
     }
+    
 }
