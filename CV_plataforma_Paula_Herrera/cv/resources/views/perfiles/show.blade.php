@@ -98,10 +98,10 @@
                     <strong class="text-gray-700">GitHub:</strong>
                     <p>{{ $perfil->github }}</p>
                 </div>
-                <div class="mb-4">
+                <!-- <div class="mb-4">
                     <strong class="text-gray-700">Usuario:</strong>
                     <p>{{ $perfil->usuario ? $perfil->usuario->name : 'No asignado' }}</p>
-                </div>
+                </div> -->
                 <hr>
                 <br>
                 <hr>
