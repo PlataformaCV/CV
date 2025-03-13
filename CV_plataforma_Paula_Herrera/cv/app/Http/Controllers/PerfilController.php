@@ -24,7 +24,7 @@ class PerfilController extends Controller
     public function create()
     {
         $usuarios = User::all();
-        $usuario = auth()->user();
+        $usuario = auth()->user();//para comprobar el usuario esta autenticado
 
         // Verificar si el usuario ya tiene un perfil, ya que solo se puede crear un cv por usuario
         $perfil = Perfil::where('usuario_id', $usuario->id)->first();

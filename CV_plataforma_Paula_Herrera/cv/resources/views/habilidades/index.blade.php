@@ -77,7 +77,7 @@ table{
 
     {{-- Si no hay usuarios --}}
     @if ($habilidades->isEmpty())
-        <p class="text-center text-muted">No hay experiencias laborales creados aún en nigún usuario.</p>
+        <p class="text-center text-muted">No hay experiencias laborales creados aún en este usuario.</p>
     @endif
 </div>
 @endsection

@@ -83,7 +83,7 @@ table{
 
     {{-- Si no hay usuarios --}}
     @if ($proyectos->isEmpty())
-        <p class="text-center text-muted">No hay habilidades creados aún en nigún usuario.</p>
+        <p class="text-center text-muted">No hay habilidades creados aún en este usuario.</p>
     @endif
 </div>
 @endsection

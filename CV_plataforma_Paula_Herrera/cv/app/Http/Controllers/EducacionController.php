@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Educacion;
 use App\Models\User;
 use App\Models\Perfil;
+use Illuminate\Support\Facades\Auth;
 
 class EducacionController extends Controller
 {
@@ -14,7 +15,10 @@ class EducacionController extends Controller
      */
     public function index()
     {
-        $formaciones=Educacion::all();
+        // quiero que solo salgan las formaciones del perfil autenticado
+
+        $perfil=Auth::user()->perfil;
+        $formaciones=$perfil->formaciones;
         return view('formaciones.index', compact('formaciones'));
     }
 
@@ -79,7 +83,7 @@ class EducacionController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Función que elimina la educación y devuelve el index de las educaciones que haya.
      */
     public function destroy(string $id)
     {

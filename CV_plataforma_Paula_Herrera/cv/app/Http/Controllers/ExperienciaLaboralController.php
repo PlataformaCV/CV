@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\ExperienciaLaboral;
 use App\Models\User;
 use App\Models\Perfil;
+use Illuminate\Support\Facades\Auth;
 
 class ExperienciaLaboralController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Función que va a devolver todas las experiencias laborales del usuario autenticado con dicho perfil
      */
     public function index()
     {
+
+        $perfil=Auth::user()->perfil;
+        $experiencias=$perfil->experiencias;
         $usuarios=User::all();
-        $experiencias=ExperienciaLaboral::all();
         return view('experiencias.index', compact('experiencias', 'usuarios'));
     }
 

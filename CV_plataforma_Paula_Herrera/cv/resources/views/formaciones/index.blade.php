@@ -82,7 +82,7 @@ table{
 
     {{-- Si no hay usuarios --}}
     @if ($formaciones->isEmpty())
-        <p class="text-center text-muted">No hay formaciones creadas aún en nigún usuario.</p>
+        <p class="text-center text-muted">No hay formaciones creadas aún en este usuario.</p>
     @endif
 </div>
 @endsection

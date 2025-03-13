@@ -14,7 +14,9 @@ class HabilidadesController extends Controller
      */
     public function index()
     {
-        $habilidades= Habilidades::all();
+        $perfil=Auth::user()->perfil;//si el user esta autenticado filtrar por habilidades
+        
+        $habilidades= $perfil->habilidades;
         return view('habilidades.index', compact('habilidades'));
     }
 
@@ -52,7 +54,7 @@ class HabilidadesController extends Controller
             $habilidad->save();
             return redirect()->route('habilidades.index')->with('success', 'Habilidad creada exitosamente');
         } catch (\Exception $e) {
-            // Manejar el error, por ejemplo, mostrando el mensaje en la vista
+            // Manejo el error
             return back()->with('error', 'Hubo un problema al crear la habilidad');
         }
     }
