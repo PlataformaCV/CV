@@ -27,11 +27,12 @@ table{
 
 <div class="container mx-auto px-4">
     <nav class="menu">
-        <a href="{{ route('perfiles.index') }}">Perfil</a>
+        <a href="{{ route('perfiles.index') }}">Mi CV</a>
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
         <a href="{{route('proyectos.index')}}">Proyectos</a>
+        <a href="{{ route('perfiles.index') }}">Perfiles públicos</a>
     </nav>
     <br>  
     <h1 class="text-3xl font-semibold mb-6">Listado de formaciones</h1>

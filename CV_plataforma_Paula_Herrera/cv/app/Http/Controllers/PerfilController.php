@@ -40,10 +40,10 @@ class PerfilController extends Controller
        // Validar los datos del formulario
             $request->validate([
                 'usuario_id' => 'required|exists:users,id',
-                'nombre' => 'required',
-                'profesion' => 'required',
-                'sobre_mi' => 'required',
-                'telefono' => 'required',
+                'nombre_completo' => 'required|string|max:255',
+                'profesion' => 'required|string|max:255',
+                'sobre_mi' => 'required|string|max:255',
+                'telefono' => 'required|string|max:10',
                 'correo_electronico' => 'required|email',
                 'web' => 'required|url',
                 'linkedin' => 'required|url',
@@ -51,7 +51,7 @@ class PerfilController extends Controller
             ]);
             Perfil::create([
                 'usuario_id' => $request->usuario_id,
-                'nombre_completo' => $request->nombre,
+                'nombre_completo' => $request->nombre_completo,
                 'profesion' => $request->profesion,
                 'sobre_mi' => $request->sobre_mi,
                 'telefono' => $request->telefono,
@@ -68,20 +68,28 @@ class PerfilController extends Controller
 
 
     /**
-     * Muestra un perfil específico.
+     * Mostrar un perfil específico.
      */
-    public function show(string $id)
+    public function show()
     {
-        $perfil = Perfil::findOrFail($id);
+        // Obtener el perfil del usuario autenticado
+        $perfil = auth()->user()->perfil;
+    
+        // Si no existe un perfil, redirigir o manejar el error de alguna manera
+        if (!$perfil) {
+            return redirect()->route('perfiles.create')->with('error', 'No tienes un perfil creado aún');
+        }
+    
+        // Si existe el perfil, pasar a la vista
         return view('perfiles.show', compact('perfil'));
     }
-
+    
     /**
      * Muestra el formulario para editar un perfil existente.
      */
     public function edit(string $id)
     {
-        $perfil = Perfil::findOrFail($id);
+        $perfil = Perfil::find($id);
         return view('perfiles.edit', compact('perfil'));
     }
 

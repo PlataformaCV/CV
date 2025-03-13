@@ -1,11 +1,48 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <form method="POST" action="{{route('perfiles.update', $perfil->id)}}">
+
+<style>
+.menu{
+    background-color: rgb(44, 76, 76);
+    color: white;
+    text-align:center;
+    width: auto;
+    padding:20px;
+}
+
+.menu a{
+    padding:20px;
+}
+.menu a:hover{
+    color: rgb(44, 76, 76);
+    background-color: white;
+}
+
+.divperfiles{
+    width: 70%;
+    margin:auto;
+
+}
+
+.centro{
+    text-align:center;
+}
+
+</style>
+<div class="container mx-auto px-4">
+<nav class="menu">
+        <a href="{{ route('perfiles.index') }}">Mi CV</a>
+        <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
+        <a href="{{route('formaciones.index')}}">Formación académica</a>
+        <a href="{{route('habilidades.index')}}">Habilidades</a>
+        <a href="{{route('proyectos.index')}}">Proyectos</a>
+        <a href="{{ route('perfiles.index') }}">Perfiles públicos</a>
+    </nav>
+    <form method="POST" action="{{route('perfiles.update', $perfil->id)}}" class="divperfiles">
         @csrf
         @method('PUT')
-        <h1>Editar CV</h1>
+        <br>
+        <h1 class="text-3xl font-semibold mb-6 centro text-center">EDITAR CV</h1>
         <div>
             <x-input-label for="nombre_completo">Nombre completo</x-input-label>
             <input id="nombre_completo" required name="nombre_completo" type="text" value="{{$perfil->nombre_completo}}" class="block mt-1 w-full" />

@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('perfiles', PerfilController::class);
+Route::get('perfiles/{id}', [PerfilController::class, 'show'])->name('perfiles.show');
 Route::resource('formaciones', EducacionController::class);
 Route::resource('habilidades', HabilidadesController::class);
 Route::resource('experiencias', ExperienciaLaboralController::class);

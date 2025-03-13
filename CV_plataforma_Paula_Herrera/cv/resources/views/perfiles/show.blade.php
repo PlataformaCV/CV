@@ -34,7 +34,7 @@
 <div class="container mx-auto px-4">
     <!-- Menú de navegación -->
     <nav class="menu">
-        <a href="{{ route('perfiles.index') }}">Mi CV</a>
+    <a href="{{ route('perfiles.index') }}">Mi CV</a>
         <a href="{{route('experiencias.index')}}">Experiencia laboral</a>
         <a href="{{route('formaciones.index')}}">Formación académica</a>
         <a href="{{route('habilidades.index')}}">Habilidades</a>
@@ -42,7 +42,7 @@
         <a href="{{ route('perfiles.index') }}">Perfiles públicos</a>
     </nav>
     <br>
-    <h1 class="text-3xl font-semibold mb-6 centro text-center">Lista de Perfiles</h1>
+    <h1 class="text-3xl font-semibold mb-6 centro text-center">MI CV</h1>
 
     {{-- Mensajes de éxito --}}
     @if (session('success'))
@@ -57,10 +57,8 @@
             <x-primary-button class="bg-blue-500 hover:bg-blue-600">Agregar un nuevo CV</x-primary-button>
         </a>
     </div>
-
-    {{-- Visualización de perfiles --}}
+<!-- perfil -->
     <div class="divperfiles grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        @foreach ($perfiles as $perfil)
             <div class="bg-white shadow-lg rounded-lg p-4">
                 <div class="flex justify-between items-center border-b pb-4 mb-4">
                     <h3 class="text-xl font-semibold centro">{{ $perfil->nombre_completo }}</h3>
@@ -180,14 +178,20 @@
                 </div>
 
                 <!-- Acciones -->
-               
+                <div class="flex justify-between items-center mt-4">
+                    <a href="{{ route('perfiles.edit', $perfil->id) }}" class="bg-blue-500 hover:bg-blue-600"><x-primary-button >Actualizar</x-primary-button ></a>
+                    <form action="{{ route('perfiles.destroy', $perfil->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este perfil?')" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-600 hover:underline"><x-primary-button >Eliminar</x-primary-button ></button>
+                    </form>
+                </div>
             </div>
             <br><br>
-        @endforeach
     </div>
     {{-- Si no hay perfiles --}}
     @if ($perfiles->isEmpty())
-        <p class="text-center text-gray-500">No hay perfiles creados aún.</p>
+        <p class="text-center text-gray-500">No hay perfil creados aún.</p>
     @endif
 </div>
 
