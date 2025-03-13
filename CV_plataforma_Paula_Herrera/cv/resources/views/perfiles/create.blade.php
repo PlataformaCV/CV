@@ -47,7 +47,6 @@
         <h1>RELLENA TU CV</h1>
         <div>
         <select name="usuario_id" id="usuario_id" class="block mt-1 w-full">
-                <option value="">Seleccione un usuario</option>
                 @foreach($usuarios as $usuario)
                     <option type="text" value="{{$usuario->id}}">{{$usuario->name}}</option>
                 @endforeach

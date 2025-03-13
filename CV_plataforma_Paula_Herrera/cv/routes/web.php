@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [PerfilController::class, 'index'])
+Route::get('/dashboard', [PerfilController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
