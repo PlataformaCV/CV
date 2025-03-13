@@ -128,7 +128,7 @@ class PerfilController extends Controller
         $perfil->save();
         // dd($request->all());
 
-        return redirect()->route('perfiles.index')->with('success', 'Perfil actualizado correctamente');
+        return redirect()->route('perfiles.show')->with('success', 'Perfil actualizado correctamente');
     }
 
     /**

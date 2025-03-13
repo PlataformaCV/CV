@@ -42,7 +42,7 @@
         <a href="{{ route('perfiles.index') }}">Perfiles públicos</a>
     </nav>
     <br>
-    <h1 class="text-3xl font-semibold mb-6 centro text-center">Lista de Perfiles</h1>
+    <h1 class="text-3xl font-semibold mb-6 centro text-center">Perfiles Públicos</h1>
 
     {{-- Mensajes de éxito --}}
     @if (session('success'))

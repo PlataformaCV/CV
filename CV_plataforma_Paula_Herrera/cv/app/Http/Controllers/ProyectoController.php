@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proyectos;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProyectoController extends Controller
 {
@@ -13,7 +14,9 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos= Proyectos::all();
+        
+        $perfil=Auth::user()->perfil;
+        $proyectos=$perfil->proyectos;
         return view('proyectos.index', compact('proyectos'));
     }
 
@@ -36,7 +39,7 @@ class ProyectoController extends Controller
             'usuario_id'=>'required|exists:users,id',
             'titulo'=>'required|string|max:223',
             'descripcion'=>'string|max:225',
-            'enlace_proyecto'=>'string|max:225'
+            'enlace_proyecto'=>'required|string|max:255'
         ]);
 
         $proyectos=new Proyectos();

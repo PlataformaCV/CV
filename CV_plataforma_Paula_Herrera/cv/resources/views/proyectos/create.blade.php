@@ -78,7 +78,7 @@
     </div>
     <div>
     <x-input-label for="enlace_proyecto">Enlace de tu proyecto</x-input-label>
-    <input id="enlace_proyecto" required name="enlace_proyecto" type="text" class="block mt-1 w-full" />
+    <input id="enlace_proyecto" required name="enlace_proyecto" type="url" class="block mt-1 w-full" />
     </div>
     <x-primary-button type="submit">Agregar</x-primary-button>
 </form>
