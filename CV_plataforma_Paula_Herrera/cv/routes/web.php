@@ -26,6 +26,11 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('perfiles', PerfilController::class);
 Route::get('/mi-cv', [PerfilController::class, 'show'])->name('perfiles.show');
+// Ruta para editar el perfil (mostrar el formulario)
+Route::get('perfiles/{id}/edit', [PerfilController::class, 'edit'])->name('perfiles.edit');
+
+// Ruta para actualizar el perfil (guardar los cambios)
+Route::put('perfiles/{id}', [PerfilController::class, 'update'])->name('perfiles.update');
 
 Route::resource('formaciones', EducacionController::class);
 Route::resource('habilidades', HabilidadesController::class);

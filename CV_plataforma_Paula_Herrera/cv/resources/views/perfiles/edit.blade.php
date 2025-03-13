@@ -19,7 +19,7 @@
 }
 
 .divperfiles{
-    width: 70%;
+    width: 60%;
     margin:auto;
 
 }
@@ -65,8 +65,8 @@
             <input id="correo_electronico" required name="correo_electronico" type="email" value="{{$perfil->correo_electronico}}" class="block mt-1 w-full" />
         </div>
         <div>
-            <x-input-label for="web">Sitio web</x-input-label>
-            <input id="web" required name="web" type="url" value="{{$perfil->sitio_web}}" class="block mt-1 w-full" />
+            <x-input-label for="sitio_web">Sitio web</x-input-label>
+            <input id="sitio_web" required name="sitio_web" type="url" value="{{$perfil->sitio_web}}" class="block mt-1 w-full" />
         </div>
         <div>
             <x-input-label for="linkedin">Linkedin</x-input-label>

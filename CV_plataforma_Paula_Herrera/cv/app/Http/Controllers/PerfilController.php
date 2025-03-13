@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perfil;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PerfilController extends Controller
 {
@@ -91,6 +92,7 @@ class PerfilController extends Controller
     public function edit(string $id)
     {
         $perfil = Perfil::find($id);
+        // dd($perfil); 
         return view('perfiles.edit', compact('perfil'));
     }
 
@@ -99,10 +101,10 @@ class PerfilController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $perfil = Perfil::findOrFail($id);
-
+        
+        $perfil = Perfil::find($id);
+        // dd($request->all());
         $validate = $request->validate([
-            'usuario_id' =>'required|exists:users,id',
             'nombre_completo' => 'required|string|max:255',
             'profesion' => 'required|string|max:255',
             'sobre_mi' => 'required|string|max:255',
@@ -113,7 +115,7 @@ class PerfilController extends Controller
             'github' => 'required|string|max:255'
         ]);
 
-        $perfil->usuario_id=$validate['usuario_id'];
+        $perfil->usuario_id = Auth::id();
         $perfil->nombre_completo = $validate['nombre_completo'];
         $perfil->profesion = $validate['profesion'];
         $perfil->sobre_mi = $validate['sobre_mi'];
@@ -122,8 +124,9 @@ class PerfilController extends Controller
         $perfil->sitio_web = $validate['sitio_web'];
         $perfil->linkedin = $validate['linkedin'];
         $perfil->github = $validate['github'];
-
+        
         $perfil->save();
+        // dd($request->all());
 
         return redirect()->route('perfiles.index')->with('success', 'Perfil actualizado correctamente');
     }
